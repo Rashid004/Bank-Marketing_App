@@ -145,8 +145,7 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 const header = document.querySelector('.header');
 const navHeight = nav.getBoundingClientRect().height;
 const stickyNav = function(entries) {
-  const [entry] = entries;
-  // console.log(entry);
+const [entry]  = entries;
 
   if(!entry.isIntersecting)
   nav.classList.add('sticky');
@@ -154,10 +153,10 @@ const stickyNav = function(entries) {
   nav.classList.remove('sticky');
 };
 
-const headerObserver = new IntersectionObserver(stickyNav,{
+const headerObserver = new IntersectionObserver(stickyNav, {
   root:null,
   threshold:0,
-  rootMargin: `-${navHeight}px`,
+  rootMargin:  `-${navHeight}px`,
 });
 headerObserver.observe(header);
 
@@ -184,7 +183,7 @@ allSections.forEach(function (section) {
 //  section.classList.add('section--hidden');
 });
 
-//////////////////
+//////////////////////
 // IMG reveling 
 const imgTargets = document.querySelectorAll('img[data-src]');
 const loadImg = function (entries,observer) {
@@ -228,7 +227,6 @@ const createDots = function() {
   });
 };
 
-
 const activateDot = function(slide) {
   document
     .querySelectorAll('.dots__dot')
@@ -236,7 +234,6 @@ const activateDot = function(slide) {
   
 document.querySelector(`.dots__dot[data-slide="${slide}"]`).classList.add('dots__dot--active');
 }
-
 
 const goToSlide = function(slide) {
 slides.forEach((s, i) => (s.style.transform = `translate(${100 * (i - slide)}%)`)
