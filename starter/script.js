@@ -79,7 +79,6 @@ section1.scrollIntoView({behavior:'smooth'});
 //   e.preventDefault();
 //   const id = this.getAttribute('href');
 //   document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-
 //   })
 // });
 
@@ -88,13 +87,13 @@ document.querySelector('.nav__links')
   e.preventDefault();
 
   // Matching startegy
-  if (e.target.classList.contains('nav__link')) {
+  if (e.target.classList.contains('nav__link')){
     const id = e.target.getAttribute('href');
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
 });
 /////////////////////
-// Tabbed Component
+//Tabbed Component
 tabsContainer.addEventListener('click',function (e) {
   const clicked = e.target.closest('.operations__tab');
 
@@ -110,7 +109,7 @@ tabsContainer.addEventListener('click',function (e) {
 
   document.querySelector(`.operations__content--${clicked.dataset.tab}`)
 .classList.add('operations__content--active');
-})
+});
 ////////////////////////////
 // Menu fade animation
 const handleHover = function(e){
@@ -142,12 +141,14 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 // })
 
 // Sticky navigation: Intersection Observer API
+// INTERSECTION OBSEVER
+
 const header = document.querySelector('.header');
 const navHeight = nav.getBoundingClientRect().height;
 const stickyNav = function(entries) {
 const [entry]  = entries;
 
-  if(!entry.isIntersecting)
+  if(!entry.isIntersecting) 
   nav.classList.add('sticky');
   else 
   nav.classList.remove('sticky');
@@ -166,7 +167,7 @@ const allSections = document.querySelectorAll
 
 const revealSection = function (entries,observer) {
   const [entry] = entries;
- 
+  
   // Gaurd clause
   if (!entry.isIntersecting) return;
 
@@ -178,6 +179,7 @@ const sectionObserver = new IntersectionObserver
   root:null,
   threshold:0.15,
 });
+
 allSections.forEach(function (section) {
  sectionObserver.observe(section); 
 //  section.classList.add('section--hidden');
@@ -188,6 +190,7 @@ allSections.forEach(function (section) {
 const imgTargets = document.querySelectorAll('img[data-src]');
 const loadImg = function (entries,observer) {
 const [entry] = entries;
+
  if (!entry.isIntersecting) return;
 
 //  replacing src to dataset src 
@@ -196,7 +199,8 @@ const [entry] = entries;
  entry.target.addEventListener('load',function () {
   entry.target.classList.remove('lazy-img');
  });
- observer.unobserve(entry.target);
+
+observer.unobserve(entry.target);
 }
 
 const imgObserver = new IntersectionObserver(loadImg, {
