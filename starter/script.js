@@ -40,10 +40,9 @@ document.addEventListener('keydown', function (e) {
 /////////////////////////////////
 // Btn Scrolling 
 btnScrollTo.addEventListener('click',function(e) {
-
 // Old Method 
-// const s1coords = section1.getBoundingClientRect();
-// console.log(s1coords);
+const s1coords = section1.getBoundingClientRect();
+console.log(s1coords);
 
 // console.log(e.target.getBoundingClientRect());
 // console.log('Current scroll (X/Y)', 
@@ -74,24 +73,24 @@ section1.scrollIntoView({behavior:'smooth'});
 //////////////////////////////////////
 // Page navigation
 
-// document.querySelectorAll('.nav__link').forEach(function(el){
-//   el.addEventListener('click',function(e){
-//   e.preventDefault();
-//   const id = this.getAttribute('href');
-//   document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-//   })
-// });
-
-document.querySelector('.nav__links')
-.addEventListener('click',function(e){
+document.querySelector('.nav__links').addEventListener('click', function(e) {
   e.preventDefault();
-
-  // Matching startegy
-  if (e.target.classList.contains('nav__link')){
+  
+  if(e.target.classList.contains('nav__link')) {
     const id = e.target.getAttribute('href');
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
-});
+})
+// document.querySelector('.nav__links')
+// .addEventListener('click',function(e){
+//   e.preventDefault();
+
+//   // Matching startegy
+//   if (e.target.classList.contains('nav__link')){
+//     const id = e.target.getAttribute('href');
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   }
+// });
 /////////////////////
 //Tabbed Component
 tabsContainer.addEventListener('click',function (e) {
@@ -161,9 +160,9 @@ const headerObserver = new IntersectionObserver(stickyNav, {
 });
 headerObserver.observe(header);
 
+
 // Reveal Section 
-const allSections = document.querySelectorAll
-('.section');
+const allSections = document.querySelectorAll('.section');
 
 const revealSection = function (entries,observer) {
   const [entry] = entries;
@@ -182,7 +181,7 @@ const sectionObserver = new IntersectionObserver
 
 allSections.forEach(function (section) {
  sectionObserver.observe(section); 
-//  section.classList.add('section--hidden');
+ section.classList.add('section--hidden');
 });
 
 //////////////////////
@@ -293,6 +292,7 @@ slider();
 // lifecycle
 
 document.addEventListener('DOMContentLoaded',
+
 function(e) {
   console.log('HTML parse and Dom tree built!');
 });
@@ -466,3 +466,27 @@ function(e) {
 // [...h1.parentElement.children].forEach(function (el){
 // if(el !== h1) el.style.transform = 'scale (0.3)'
 // });
+
+// const message = document.createElement('div');
+// message.classList.add('cookie-message');
+//  message.innerHTML =
+//    'We reserved cookie for improved functionality and anaylitic!<button class="btn btn--close-cookie">Got It Bhai!<button>';
+//    header.prepend(message);
+//    document.querySelector('.btn--close-cookie').addEventListener('click',function() {
+//     message.remove();
+//    });
+
+// const randomInt = (min, max) => Math.floor(Math.random() * (min - max + 1) + min);
+
+// const randomColor = () =>
+//   `rgba(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)},)`;
+
+//   document.querySelector('.nav__link').addEventListener('click', function(e) {
+//     this.style.backgroundColor = randomColor();
+//   })
+//   document.querySelector('.nav__links').addEventListener('click', function(e) {
+//     this.style.backgroundColor = randomColor();
+//   })
+//   document.querySelector('.nav').addEventListener('click', function(e) {
+//     this.style.backgroundColor = randomColor();
+//   });
